@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -14,7 +15,10 @@ import { AppRoutingModule } from './/app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB5kGDB9MysJ3GbxTQhc6Nimh0vjJKRiJc',
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,15 @@
-<h1>Landig Page</h1>
-
-<h1>Kiddo, you can!</h1>
+<div class="mapcotainer">
+<agm-map 
+[latitude]="lat" 
+[longitude]="lng"
+[zoom]="13">
+<!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
+</agm-map>
+</div>
 
 <div *ngIf="position">
 	<p>Latitude:  {{position.coords.latitude}}</p>
 	<p>Longitude: {{position.coords.longitude}}</p>
 </div>
-<button (click)="getLocation()"> get it</button>
+<button (click)="getLocation()">Get it</button>
 
