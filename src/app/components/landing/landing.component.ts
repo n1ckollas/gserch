@@ -10,11 +10,9 @@ export class LandingComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-  	// this.getLocation()
-  }
+  ngOnInit() {}
 
-  primises(){
+  getLocation(): void{
   	let promice = new Promise(function(resolve, reject){
   		if(navigator.geolocation){
   			navigator.geolocation.getCurrentPosition(function(position){
@@ -22,27 +20,9 @@ export class LandingComponent implements OnInit {
   			}
   		}
   	});
-  	promice.then((scss) => {
-  		console.log(scss.coords);
-  		this.position = scss;
+  	promice.then((sucess) => {
+  		console.log(sucess.coords);
+  		this.position = sucess;
   	})
   }
-
-  getLocation(){
-  	var r
-  	console.log('clicked')
-  	if (navigator.geolocation){
-  		navigator.geolocation.getCurrentPosition(function(position){
-  			var res = new Promise(function(resolve, reject){
-  				resolve(position);
-  			})
-  			res.then(function(responce){
-  				console.log(responce);
-  			})
-  		});
-  	} else {
-  		alert("Geolocation is not supported in this browser");
-  	}
-  }
-
 }
