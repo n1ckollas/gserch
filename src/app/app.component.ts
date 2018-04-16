@@ -8,6 +8,13 @@ declare var $:any;
 })
 export class AppComponent implements OnInit {
 	ngOnInit(){
-		$('#butn').sidr({side:'right'});
+		$('#menu').sidr({
+			name:'sidr',
+			side:'right',
+			});
+		$('.item').click(function(){
+
+			$.sidr('close', 'sidr');
+		})
 	}
 }

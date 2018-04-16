@@ -1,12 +1,19 @@
 <div class="appcontaner">
-	<a id="butn" href="#sidr" class="btn btn-primary position"> Toggle Menu </a>
-	<router-outlet></router-outlet>
+	
+	<a id="menu" href="#sidr" class="btn btn-primary position">
+		<i class="fas fa-bars"></i>
+	</a>
+
 	<div id="sidr" class="sidr right">
-		<!-- slider content goes here -->
 		<ul>
-			<li><a routerLink="/">Start</a></li>
-			<li><a routerLink="/search">Search</a></li>
+			<li><a class="item" routerLink="/">Home</a></li>
+			<li><a class="item" routerLink="/search">Search</a></li>
 			<li></li>
 		</ul>
+		
+		
 	</div>
+
+	
 </div>
+<router-outlet></router-outlet>
