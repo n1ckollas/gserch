@@ -1,0 +1,11 @@
+*~
+*.diff
+*.patch
+.DS_Store
+.tags
+.tags_sorted_by_file
+package-lock.json
+node_modules
+coverage/
+dist/stylesheets/*.map
+dist/vendor/

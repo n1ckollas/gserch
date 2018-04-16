@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Marker } from '../../intfaces/Marker';
 
 
 @Component({
@@ -10,6 +11,20 @@ export class LandingComponent implements OnInit {
 	position:object;
 	lat: number = 40.6239833;
   	lng: number = -74.0342588;
+  	mapStyles = [
+  	{
+  		stylers: [
+  		{saturation: -100}
+  		]
+  	}
+  	];
+  	marker: Marker = {	
+	  	lat: 40.6239833,
+		lng: -74.0342588,
+		label: 'Your position',
+		draggable: 	false,
+		iconUrl: '../../../assets/images/locMarker_15.png',
+	} 
 
 
   constructor() { }

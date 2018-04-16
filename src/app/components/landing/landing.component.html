@@ -2,14 +2,21 @@
 <agm-map 
 [latitude]="lat" 
 [longitude]="lng"
-[zoom]="13">
-<!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
+[zoom]="13"
+[styles]="mapStyles">
+<agm-marker 
+	[latitude]="marker.lat" 
+	[longitude]="marker.lng"
+	[iconUrl]="marker.iconUrl"></agm-marker>
 </agm-map>
+<div class="buttoncontainer">
+	<a class="btn btn-primary btn-lg">Let's Search</a>
+</div>
 </div>
 
-<div *ngIf="position">
+<!-- <div *ngIf="position">
 	<p>Latitude:  {{position.coords.latitude}}</p>
 	<p>Longitude: {{position.coords.longitude}}</p>
 </div>
-<button (click)="getLocation()">Get it</button>
+<button (click)="getLocation()">Get it</button> -->
 
