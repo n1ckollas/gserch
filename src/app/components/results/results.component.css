@@ -3,6 +3,11 @@
 	padding:10px 15px;
 	background-color: white;
 }
+.message{
+	text-align: center;
+	width:100%;
+	
+}
 .positioner{
 	position:relative;
 }

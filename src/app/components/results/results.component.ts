@@ -11,18 +11,23 @@ import { NearsearchService } from '../../services/nearsearch/nearsearch.service'
 export class ResultsComponent implements OnInit {
 	p: number = 1;
 	searchData:object;
-	responce:object;
+	responce:any;
 	checked:boolean;
+	nothingFound:boolean;
 
   constructor(private route: ActivatedRoute,
   				private nearSrch: NearsearchService) { }
 
   ngOnInit() {
   	this.searchData = JSON.parse(this.route.snapshot.paramMap.get('result'));
-  	console.log(this.searchData);
+  	console.log(this.responce);
   	 this.nearSrch.searchNear(this.searchData)
   		.subscribe(data => {
   			this.responce = JSON.parse(data.toString());
+  			if(this.responce.status != 'OK'){
+  				this.nothingFound = true
+  			}
+  			console.log(this.responce.status);
   		});
   }
 

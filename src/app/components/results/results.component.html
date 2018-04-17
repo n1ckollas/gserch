@@ -1,5 +1,12 @@
 <div class="positioner">
-	<div *ngIf="responce">
+	<div *ngIf="nothingFound">
+		<div class="message">
+			<br><br><br>
+		<h2>We have not found anything</h2>
+		<h3>please try again her: <a routerLink="/search"> Search page</a></h3>
+		</div>
+	</div>
+	<div *ngIf="!nothingFound">
 		<div *ngFor="let r of responce.results | paginate: { itemsPerPage: 10, currentPage: p}">
 			<div class="details">
 				<h2>{{r.name}}</h2>
@@ -14,8 +21,7 @@
 			</div>
 		</div>
 		<pagination-controls (pageChange)="p = $event"></pagination-controls>
-	</div>
-	<div class="options btn btn-primary">
+		<div class="options btn btn-primary">
 		<label for="isOpen"> Is it Open</label>
 		<input 
 		id="isOpen"
@@ -25,5 +31,6 @@
 		(change)="onChange($event.target.checked)"
 		>
 
+	</div>
 	</div>
 </div>
