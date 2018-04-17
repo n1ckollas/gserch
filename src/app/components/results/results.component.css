@@ -1,0 +1,17 @@
+.details{
+	margin:15px 10px;
+	padding:10px 15px;
+	background-color: white;
+}
+.positioner{
+	position:relative;
+}
+.options{
+	color:black;
+	position:absolute;
+	width:120px;
+	height: 40px;
+	top: 8px;
+	right: 120px;
+	text-align: center;
+}

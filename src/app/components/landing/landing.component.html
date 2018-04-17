@@ -1,22 +1,23 @@
 <div class="mapcotainer">
 <agm-map 
-[latitude]="lat" 
-[longitude]="lng"
-[zoom]="13"
+[latitude]="centerLat" 
+[longitude]="centerLng"
+[zoom]="mapZoom"
+[scrollwheel]="false"
+[streetViewControl]="false"
+[zoomControl]="false"
 [styles]="mapStyles">
 <agm-marker 
 	[latitude]="marker.lat" 
 	[longitude]="marker.lng"
-	[iconUrl]="marker.iconUrl"></agm-marker>
+	[iconUrl]="marker.iconUrl"
+	[visible]="marker.visible"
+	></agm-marker>
 </agm-map>
 <div class="buttoncontainer">
 	<a routerLink="/search" class="btn btn-primary btn-lg">Let's Search</a>
+	<button (click)="getMyLocation()" class="btn btn-lg btn-outline-primary">
+		<i class="far fa-compass"></i>
+	</button>
 </div>
 </div>
-
-<!-- <div *ngIf="position">
-	<p>Latitude:  {{position.coords.latitude}}</p>
-	<p>Longitude: {{position.coords.longitude}}</p>
-</div>
-<button (click)="getLocation()">Get it</button> -->
-

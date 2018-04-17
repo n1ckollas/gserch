@@ -1,0 +1,29 @@
+<div class="positioner">
+	<div *ngIf="responce">
+		<div *ngFor="let r of responce.results | paginate: { itemsPerPage: 10, currentPage: p}">
+			<div class="details">
+				<h2>{{r.name}}</h2>
+				<p *ngIf="r.vicinity">Around: {{r.vicinity}}</p>
+				<p *ngIf="r.opening_hours">
+						<span *ngIf="r.opening_hours.open_now">
+							Open Now: {{r.opening_hours.open_now}}
+						</span>	
+					</p>
+				<p *ngIf="r.price_level">Price Level: {{r.price_level}}</p>
+				<p *ngIf="r.rating">Rating: {{r.rating}}</p>
+			</div>
+		</div>
+		<pagination-controls (pageChange)="p = $event"></pagination-controls>
+	</div>
+	<div class="options btn btn-primary">
+		<label for="isOpen"> Is it Open</label>
+		<input 
+		id="isOpen"
+		type="checkbox" 
+		name="isOpen" 
+		[(ngModel)]='checked'
+		(change)="onChange($event.target.checked)"
+		>
+
+	</div>
+</div>

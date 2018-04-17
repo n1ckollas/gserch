@@ -1,0 +1,38 @@
+.positioner{
+	position: relative;
+}
+.results, .results2{
+	position: absolute;
+	left: 0;
+	width:100%;
+	background-color: white;
+	text-align: left;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+.results{
+	top:38px;
+}
+.results2{
+	top:68px;
+}
+.results li, .results2 li{
+	padding: 5px 0 5px 10px;
+}
+.results li:hover, .results2 li:hover{
+	background-color: blue;
+	color:white;
+	cursor:pointer;
+}
+.radius{
+	width:100%;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Marker } from '../../intfaces/Marker';
+import { LocationService } from '../../services/location/location.service';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
@@ -8,42 +10,64 @@ import { Marker } from '../../intfaces/Marker';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
-	position:object;
-	lat: number = 40.6239833;
-  	lng: number = -74.0342588;
-  	mapStyles = [
+	position:any;
+	centerLat: number = 39.50;//center
+  centerLng: number = -92.35;//center
+  mapZoom:number = 4; //13 is optimal
+  mapStyles = [
   	{
-  		stylers: [
-  		{saturation: -100}
-  		]
+  		stylers: [{saturation: -100}]
   	}
-  	];
-  	marker: Marker = {	
-	  	lat: 40.6239833,
-		lng: -74.0342588,
+  ];
+
+  marker: Marker = {	
+	  lat: 39.50,//40.6239833,
+		lng: -92.35,//-74.0342588,
 		label: 'Your position',
-		draggable: 	false,
+    visible: false,
 		iconUrl: '../../../assets/images/locMarker_15.png',
 	} 
 
 
-  constructor() { }
+  constructor(private locationSrvc: LocationService) { }
 
-  ngOnInit() {
-  	// this.getLocation();
+  ngOnInit() {}
+
+  getMyLocation(): void{
+    this.locationSrvc.getLocation()
+    .then((sucess) => {
+      console.log(sucess);
+        if(sucess){
+        this.position = sucess;
+        this.centerLat = this.position[0];
+        this.centerLng = this.position[1];
+        this.marker.lat = this.position[0];
+        this.marker.lng = this.position[1];
+        this.marker.visible = true;
+        this.mapZoom = 13;
+      }
+    })
   }
 
-  getLocation(): void{
-  	let promice = new Promise(function(resolve, reject){
-  		if(navigator.geolocation){
-  			navigator.geolocation.getCurrentPosition(function(position){
-  				resolve(position);
-  			})
-  		}
-  	});
-  	promice.then((sucess) => {
-  		this.position = sucess;
-  	})
-  }
+
+
+
+
+
+
+
+
+  // getLocation(): void{
+  // 	let promice = new Promise(function(resolve, reject){
+  // 		if(navigator.geolocation){
+  // 			navigator.geolocation.getCurrentPosition(function(position){
+  // 				resolve(position);
+  // 			})
+  // 		}
+  // 	});
+  // 	promice.then((sucess) => {
+  // 		this.position = sucess;
+  // 	})
+  // }
 
 }

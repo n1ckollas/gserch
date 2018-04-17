@@ -1,101 +1,91 @@
 <div class="container">
 	<div class="row">
 	
-			<div class="col-md-3">
+			<div class="col-1">
 				
 			</div>	
-			<div class="col-md-6 text-center">
+			<div class="col-10 text-center">
+				<br>
 			<h1>Search Options</h1>
-			<form>
-
-				<div class="form-group">
-					<label for="exampleInputEmail1">Address</label>
-					<input type="text" 
+			<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+				<div class="input-group mb-3 positioner">
+					<input 
+					type="text"
+					name="address"
+					id="adres"
 					class="form-control" 
-					id="exampleInputEmail1" 
-					placeholder="City or Address">
+					required
+					minlength="4" 
+					placeholder="Street, City, State, Zip"
+					[disabled]="isDisabled" 
+					(keyup)="addrSearch($event)"
+					[(ngModel)]="addr"
+					>
+					<ul *ngIf="addrData"
+					[style.display]="ulDisplay" 
+					class="results">
+						<li *ngFor="let d of addrData.predictions">
+							<span (click)="setValue(d.description)">{{d.description}}</span>
+						</li>
+					</ul>
+					<div class="input-group-append">
+					<button 
+					(click)="getCoords()"
+					class="btn btn-outline-dark" 
+					type="button">Use Location</button>
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Category</label>
-					<input type="text" 
+					<label for="SearchRadius">Radius:{{radius}} Miles</label>
+				</div>
+				<div class="form-group">
+					<input [(ngModel)]="radius" 
+					type="range" 
+					min="0" 
+					max="30" 
+					name="radius"
+					id="SearchRadius"
+					class="radius">
+				</div>
+				<div class="form-group">
+					<label for="category">Pick a Category:</label>
+					<input
+					name="cat"
+					type="text" 
 					class="form-control" 
-					id="exampleInputPassword1" 
-					placeholder="Pick a Category">
+					id="category" 
+					placeholder="Establishment, restaurant, bar, park..."
+					(keyup)=catSearch($event)
+					[(ngModel)]="cat">
 				</div>
-				<div class="form-group">
-				    <div class="form-check">
-				      <input class="form-check-input" type="checkbox" id="gridCheck">
-				      <label class="form-check-label" for="gridCheck">
-				        Open Now
-				      </label>
-				    </div>
+				<div class="form-group positioner">
+					<label for="placeSearch">Place Search:</label>
+					<input type="text"
+					required
+					minlength="4" 
+					class="form-control" 
+					name="placeSearch" 
+					placeholder="Search for ..."
+					[(ngModel)]="place"
+					(keyup)=placeSearch($event)>
 				</div>
-				<div class="form-group">
-					<input type="range" min="0" max="20" name="radius">
-				</div>
+				<br>
 				<div class="row">
-				<div class="col-md-6">
-					<button class="btn btn-outline-primary">Search</button>
+					<div class="col-6">
+						<button type="submit" class="btn btn-outline-primary">Search</button>
+					</div>
+					<div class="col-6">
+						<button 
+						(click)="startOver()" 
+						class="btn btn-outline-primary">Start Over</button>
+					</div>
 				</div>
-				<div class="col-md-6">
-					<button class="btn btn-outline-primary">Start Over</button>
-				</div>
-				</div>
-	
-				
 			</form>
 			</div>	
-			<div class="col-md-3">
+			<div class="col-1">
 				
 			</div>
-		
 	</div>
 </div>
 
 
-
-
-
-<!-- 
-<div class="row">
-	<form>
-		<div class="col-md-3">
-			
-		</div>			
-		<div class="col-md-6">
-			<div class="form-group">
-				<label for="exampleInputEmail1">Address</label>
-				<input type="text" 
-				class="form-control" 
-				id="exampleInputEmail1" 
-				placeholder="City or Address">
-			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Category</label>
-				<input type="text" 
-				class="form-control" 
-				id="exampleInputPassword1" 
-				placeholder="Pick a Category">
-			</div>
-			<div class="form-group text-center">
-			    <div class="form-check">
-			      <input class="form-check-input" type="checkbox" id="gridCheck">
-			      <label class="form-check-label" for="gridCheck">
-			        Open Now
-			      </label>
-			    </div>
-			</div>
-			<div class="form-group text-center">
-				<input type="range" name="radius">
-			</div>
-			<div class="form-group text-center">
-				<button class="btn btn-primary">Search</button>
-				<button class="btn btn-primary">Start Over</button>
-			</div>
-		</div>		
-		<div class="col-md-3">
-			
-		</div>
-		</form>
-</div>
- -->
