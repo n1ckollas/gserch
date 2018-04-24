@@ -3,17 +3,19 @@ import { Marker } from '../../intfaces/Marker';
 import { LocationService } from '../../services/location/location.service';
 import { debounceTime } from 'rxjs/operators';
 
-
+declare var $:any;
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
+
 export class LandingComponent implements OnInit {
 	position:any;
 	centerLat: number = 39.50;//center
   centerLng: number = -92.35;//center
   mapZoom:number = 4; //13 is optimal
+  height:string;
   mapStyles = [
   	{
   		stylers: [{saturation: -100}]
@@ -31,7 +33,12 @@ export class LandingComponent implements OnInit {
 
   constructor(private locationSrvc: LocationService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.height = ($(window).height()).toString() + 'px'
+  }
+  onResize(event){
+    this.height = (event.target.innerHeight).toString() + 'px'
+  }
 
   getMyLocation(): void{
     this.locationSrvc.getLocation()
@@ -48,14 +55,6 @@ export class LandingComponent implements OnInit {
       }
     })
   }
-
-
-
-
-
-
-
-
 
   // getLocation(): void{
   // 	let promice = new Promise(function(resolve, reject){

@@ -97,7 +97,6 @@ export class SearchComponent implements OnInit {
 	  	if(this.location){
 	  		data.locationlat = this.location[0];
 	  		data.locationlon = this.location[1];
-	  		console.log(data)
 	  	}
 	  	data.address = value.address;
 	  	data.cat = value.cat;

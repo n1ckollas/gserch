@@ -4,9 +4,7 @@ import { Injectable } from '@angular/core';
 export class LocationService {
 	position:any;
 
-  constructor() { 
-  	console.log('location service is on')
-  }
+  constructor() {  }
 
   getLocation(){
   	let promice = new Promise(function(resolve, reject){

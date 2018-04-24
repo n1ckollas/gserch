@@ -9,7 +9,8 @@
 			<h1>Search Options</h1>
 			<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
 				<div class="input-group mb-3 positioner">
-					<input 
+					<input
+					autocomplete='street-address'
 					type="text"
 					name="address"
 					id="adres"
@@ -40,6 +41,7 @@
 				</div>
 				<div class="form-group">
 					<input [(ngModel)]="radius" 
+					autocomplete="off"
 					type="range" 
 					min="0" 
 					max="30" 
@@ -50,6 +52,7 @@
 				<div class="form-group">
 					<label for="category">Pick a Category:</label>
 					<input
+					autocomplete="off"
 					name="cat"
 					type="text" 
 					class="form-control" 
@@ -59,13 +62,13 @@
 					[(ngModel)]="cat">
 				</div>
 				<div class="form-group positioner">
-					<label for="placeSearch">Place Search:</label>
+					<label for="placeSearch">Place's Name:</label>
 					<input type="text"
 					required
 					minlength="4" 
 					class="form-control" 
 					name="placeSearch" 
-					placeholder="Search for ..."
+					placeholder="e.g. Applebees....."
 					[(ngModel)]="place"
 					(keyup)=placeSearch($event)>
 				</div>

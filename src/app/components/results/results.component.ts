@@ -12,6 +12,7 @@ export class ResultsComponent implements OnInit {
 	p: number = 1;
 	searchData:object;
 	responce:any;
+	results:any;
 	checked:boolean;
 	nothingFound:boolean;
 
@@ -20,14 +21,13 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
   	this.searchData = JSON.parse(this.route.snapshot.paramMap.get('result'));
-  	console.log(this.responce);
   	 this.nearSrch.searchNear(this.searchData)
   		.subscribe(data => {
   			this.responce = JSON.parse(data.toString());
+  			this.results = this.responce.results
   			if(this.responce.status != 'OK'){
   				this.nothingFound = true
   			}
-  			console.log(this.responce.status);
   		});
   }
 

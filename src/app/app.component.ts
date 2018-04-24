@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
 			side:'right',
 			});
 		$('.item').click(function(){
-
 			$.sidr('close', 'sidr');
 		})
 	}

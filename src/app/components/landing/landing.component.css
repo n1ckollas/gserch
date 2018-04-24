@@ -6,7 +6,6 @@
 	margin:0;
 }
 agm-map {
-  height: 595px;
   width: 105%;
   margin: 0;
 }
@@ -17,21 +16,5 @@ agm-map {
 	text-align: center;
 }
 
-@media screen and (min-width: 136px) and (max-width: 1920px) {
-	agm-map {height: 1080px;}
-
-}
-@media screen and (min-width: 1024px) and (max-width: 1366px) {
-	agm-map {height: 1366px;}
-
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-	agm-map {height: 1024px;}
-
-}
-@media screen and (min-width: 375px) and (max-width: 812px) {
-	agm-map {height: 700px;}
-
-}
 
 

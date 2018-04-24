@@ -7,7 +7,7 @@
 		</div>
 	</div>
 	<div *ngIf="!nothingFound">
-		<div *ngFor="let r of responce.results | paginate: { itemsPerPage: 10, currentPage: p}">
+		<div *ngFor="let r of results | paginate: { itemsPerPage: 10, currentPage: p}">
 			<div class="details">
 				<h2>{{r.name}}</h2>
 				<p *ngIf="r.vicinity">Around: {{r.vicinity}}</p>

@@ -1,5 +1,6 @@
 <div class="mapcotainer">
-<agm-map 
+<agm-map (window:resize)="onResize($event)" 
+[style.height]="height"
 [latitude]="centerLat" 
 [longitude]="centerLng"
 [zoom]="mapZoom"

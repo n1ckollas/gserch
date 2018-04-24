@@ -7,18 +7,13 @@ const credos = require('./cred');
 var app 		=	express();
 var router		=	express.Router();
 
-// 'https://maps.googleapis.com/maps/api/place/textsearch/json?'
-//                      + 'query=' + query
-//                      + '&location='+ store_info[4] +','+ store_info[5]
-//                      + '&radius=5000'
-//                      + '&key=' + google_key)
-// https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Vict&types=geocode&language=fr&key=YOUR_API_KEY
-
 router.post('/near', function(req, res){
 	value = req.body;
 	console.log(value);
 	var options = {
-//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&types=food&key=YOUR_API_KEY
+		//https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Sydney&key=YOUR_API_KEY
+		//https://maps.googleapis.com/maps/api/place/textsearch/json?query=123+main+street&location=42.3675294,-71.186966&radius=10000&key=YOUR_API_KEY
+		//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&types=food&key=YOUR_API_KEY
 		url:'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
 	}
 	if(value.locationlat != 0 && value.locationlon != 0){
