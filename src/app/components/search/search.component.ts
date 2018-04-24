@@ -27,13 +27,7 @@ export class SearchComponent implements OnInit {
   	public router:Router
   	) { }
 
-  ngOnInit() {
-  	this.locationSrvc.getLocation()
-  	.then((success: {}) =>{
-  		this.location = success;
-  	});
-
-  }
+  ngOnInit() { }
 
   startOver(){
   	this.addr = '';
