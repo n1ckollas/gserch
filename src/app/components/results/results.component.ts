@@ -31,9 +31,26 @@ export class ResultsComponent implements OnInit {
   		});
   }
 
-  openNow(searhData){
-  }
-  onChange($event){
+  onChange(event){
+    console.log(this.results);
+    console.log(this.responce.results);
+    if(event.target.checked == true){
+      // sort out an array
+      var i;
+      var results = this.responce.results
+      var sorted_results = []
+      for(i = 0; i < results.length; i++){
+        if (results[i].opening_hours){
+           if (results[i].opening_hours.open_now){
+             sorted_results.push(results[i])
+           }
+         }
+      }
+      this.results = sorted_results;
+    }else{
+      //reassign back the data
+      this.results = this.responce.results
+    }
   }
 
 }
