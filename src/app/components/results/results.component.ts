@@ -32,8 +32,8 @@ export class ResultsComponent implements OnInit {
   }
 
   onChange(event){
-    console.log(this.results);
-    console.log(this.responce.results);
+    // console.log(this.results);
+    // console.log(this.responce.results);
     if(event.target.checked == true){
       // sort out an array
       var i;
@@ -48,8 +48,8 @@ export class ResultsComponent implements OnInit {
       }
       this.results = sorted_results;
     }else{
-      //reassign back the data
-      this.results = this.responce.results
+      // reassign back the data
+      this.results = this.responce.results;
     }
   }
 
